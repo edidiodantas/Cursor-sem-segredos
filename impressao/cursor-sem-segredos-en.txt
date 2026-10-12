@@ -1,0 +1,1168 @@
+CURSOR SEM SEGREDOS
+English source copy. Same chapter order as cursor-sem-segredos.txt.
+Each chapter keeps the Portuguese title in parentheses so you can compare.
+This is an independent study guide based on Cursor's public docs as of October 2026. It is not an official manual.
+
+On Windows and Linux, Cmd means Ctrl, and Option means Alt. Shift, Tab, Enter, and Esc stay the same.
+
+====================================================================
+Start — How to read this book
+(Portuguese title: Como ler este livro)
+
+This book teaches you to use Cursor for real: the screen, the shortcuts, what to ask, what to review, and when to let the agent work away from your machine. Each chapter ends with something you do, not with a list of button names.
+
+Start here if you write programs in text files and the English on the screen gets in the way. Read "Why Cursor works this way." The clicks are in "On your computer, not in the cloud." The dictionary of English words is in "The screen is in English."
+
+Level 1, Basic. Why the tool works this way, how to make the chat start on your computer, and how to review a change.
+
+Level 2, Intermediate. Modes, better requests, project rules, models, Git, skills, and outside tools.
+
+Level 3, Advanced. The agent in the cloud, the terminal, subagents, hooks, pull-request review, and a way of working that does not fall apart.
+
+How the shortcuts are written
+
+Cursor's docs write shortcuts the Mac way. On Windows and Linux, Cmd becomes Ctrl and Option becomes Alt. Shift, Tab, Enter, and Esc stay the same.
+
+If a shortcut does not do what the book says, someone already changed it. Open the command palette with Cmd+Shift+P, search for Keyboard Shortcuts, or press Cmd+R and then Cmd+S.
+
+What this book is not
+
+It is not Cursor's official manual, and it does not list model prices. Prices, model names, and screen details change. The stable map is at cursor.com/docs. The job does not change: you describe the result, the agent edits the code, and you check before you keep the change.
+
+How to study
+
+Read one chapter and do the exercise at once, in a small project of your own. Mark the chapter as read. The browser stores that only on this machine.
+
+====================================================================
+Basic — Why Cursor works this way
+(Portuguese title: Por que o Cursor funciona assim)
+
+You can spend a whole life programming in a text editor and on paper. Cursor does not ask you to change profession. It asks you to know where the work is happening, and to read the change before you keep it. The rest is the job you already have: say what the program should do.
+
+Why the window looks like something else
+
+A program is still a text file. The window around it is a desk with drawers: the file list, search, the place where the program runs, and the history of what changed. That is called an IDE, an integrated development environment. The name sounds large. The job is not. It is a notepad with the project folder open beside it.
+
+Cursor is that desk plus a person who writes in the file when you ask. You still own the text. That person hands back a proposal. You accept it or throw it away.
+
+Why the screen is in English
+
+The product is made in English, and the buttons were not translated. Basic English is enough to read the button name. It is not enough to see the decision hidden behind the name. That is why a group loses an hour: each person pretends they understood Cloud or Last Used, and the chat goes to the wrong computer. This book says what to do. You may write the request to the agent in Portuguese.
+
+Why there are two computers
+
+There is your computer, with your files and the USB drive on the desk. There is another computer, in the cloud, which receives a copy of the project. That second computer can keep working while your machine is off, and it hands back a request to join the work, called a pull request.
+
+The USB drive does not show up there because it is not plugged into that computer. The cable is fine. It is a different address. The desktop the cloud agent opens is the screen of that second computer, not your desk.
+
+Both are useful. Your computer is for the file in front of you. The cloud is for work that can finish without you. Landing in the cloud by accident is what makes people quit: the tool seems unable to see what is on the desk.
+
+Why changing the setting does not move this chat
+
+A chat is born on one of the two computers and stays there. Default Environment only says where the next chat is born. Last Used repeats the place of the previous one. If the previous chat was in the cloud, the next one is born in the cloud too. Closing the program does not carry the chat from one computer to the other. It is the same as changing the default printer: the page already printing still comes out of the old printer.
+
+To work on your files, open the folder, set the default to Local, and start a new chat. The clicks are in "On your computer, not in the cloud."
+
+Why you open a folder, not a file
+
+An open file is one sheet. The folder is the stack. The agent needs the stack to find the right sheet. Open File hands you one sheet. Open Folder hands you the stack. Without the stack, the program often offers only the cloud, because there is no local folder to work in.
+
+Why you read the difference before you accept
+
+The agent writes with confidence even when it is wrong. The reply says the intention. The diff is the marked-up sheet: what left and what came in. Accepting is signing. Without the signature, a change nobody read enters the project. That is true on paper, in a text file, and here.
+
+Why there are three ways to write
+
+- Tab finishes the line you are already typing. It is a colleague looking over your shoulder. It does not chat, and it does not follow a project rule.
+- Inline edit, Cmd+K, changes the piece you selected. It is for one sheet and a short request.
+- Agent is a request for a job: explain, change several sheets, run the program. It hands the marked-up sheet back for you to decide.
+
+What is enough to begin
+
+A subscription is worth it when three things are clear: the chat is on your computer, the request says the result, and you read the change before you accept. People who quit usually did not fail at programming. They failed to see which computer the chat was on. That does not require a meeting. It is written here.
+
+For the group
+
+In the first hour, one person shares the screen. Before any request, everyone reads the selector under the input. If it says Cloud, the hour has not started. The full script is in "The screen is in English."
+
+====================================================================
+Basic — What Cursor does
+(Portuguese title: O que o Cursor faz)
+
+Cursor is a code editor with artificial intelligence inside. Around the text are the file list, search, the terminal, and the history of what changed. If you come from Notepad, read "Why Cursor works this way" first. The practical difference is the agent, which proposes a change, and the suggestion that finishes the line while you type.
+
+The three everyday tools
+
+Tool | When to use it | What it does not do
+
+Tab | You are typing and you want the next line, or the next few. | It does not follow a project rule. It does not chat.
+
+Inline edit | A local change, in the piece you selected. | It does not apply the user rules from chat. It is not the place for a large rewrite.
+
+Agent | Explain the project, change several files, run tests, investigate a bug. | It does not replace your review. It is wrong with confidence.
+
+The Agent is three pieces: the instructions (what you wrote, plus the project rules), the tools (search, read, edit, terminal, browser), and the model you chose. Cursor tunes that set for each model. You do not have to relearn the editor when you change the model.
+
+What remains your job
+
+- Say what result you want, and how you will know it worked.
+- Point at the file when you already know which one. Let the agent search when you do not.
+- Read the diff. Accept, reject, or ask for another path.
+- Do not paste a password, a token, or a client's data into the chat.
+
+One sentence to keep
+
+Tab finishes what you are already doing. Inline edit changes one piece. The Agent does a job and waits for your review.
+
+====================================================================
+Basic — On your computer, not in the cloud
+(Portuguese title: No seu computador, não na nuvem)
+
+This is the chapter that saves the wasted hour. Cursor on your computer and the agent in the cloud are different things. You can open the app on your desk and still have the chat running on a virtual machine far away.
+
+The two places
+
+Where the chat runs | What it can see
+
+On your computer | The folder you opened, the mounted USB drive, the files on that machine.
+
+In the cloud | A copy of the repository on a virtual machine. That machine's desktop is not yours. Its address 127.0.0.1 does not open in your browser.
+
+The cloud is for when you want the agent to work alone and hand back a pull request. It is not for reading a USB drive plugged into your PC.
+
+Why your change jumps back to the cloud
+
+In Settings, then Agents, then Default Environment, the usual default is Last Used. A chat in the cloud makes the next one born in the cloud too. Switching one chat in the middle does not save the default. Closing and opening Cursor does not move the chat that is already in the cloud.
+
+There is another door into the cloud: starting with no folder open. Without a local folder, the selector only shows Cloud.
+
+Do this once
+
+- In the File menu, click Open Folder and choose the project folder. Open File opens one file, and that is not enough.
+- Open Settings, go to Agents, then Default Environment. Choose Local. Do not leave Last Used: if the last chat was in the cloud, the next one is born there.
+- Close Cursor and open it again. The old chat does not move.
+- Start a new chat. On the screen that is New Chat or New Agent.
+- Before you type, look at the selector under the input. It must be your computer. If it says Cloud, do not send.
+
+How to know without asking the agent
+
+The selector under the input is the answer, before you send. If the chat already went to the cloud, its menu has Move to, then Local. That works only when the same folder is already open on the computer. The other words on the screen are in "The screen is in English."
+
+USB drive
+
+The agent reads a USB drive only after the operating system has mounted it on the same machine where the agent runs. On Linux the path shows up in /media or /mnt. On Windows it shows up as a drive, for example E:. A USB drive on your PC does not cross over to the cloud. There is no button on the cloud desktop that brings that USB across.
+
+The USB drive is still a complete way to work. GitHub is another place, on the internet, and it asks for an account and a connection. Why they differ, and how to open the USB folder in Cursor without that account, is in "USB drive and GitHub."
+
+Practice now
+
+Open a new chat with the project folder open. Before you send any request, read the selector. If it says Cloud, do not send. Set the default to Local and open another chat.
+
+====================================================================
+Basic — The screen is in English
+(Portuguese title: A tela está em inglês)
+
+Cursor's screen is not in Portuguese. A person who pretends they read the menu stalls the whole group. This chapter is the dictionary: the word on the screen, what it means, and what to do with it. When someone gets stuck on a word, the answer is here, not in a meeting to guess.
+
+Where the chat runs
+
+On the screen | In Portuguese | What to do
+
+File | Arquivo | The menu in the corner. This is how you open the folder.
+
+Open Folder | Abrir pasta | Choose the project folder on your computer. Without this, the chat falls into the cloud.
+
+Open File | Abrir arquivo | Opens one file. It does not replace opening the folder.
+
+Settings | Configurações | The gear, or Cmd+comma.
+
+Cursor Settings | Configurações do Cursor | Cmd+Shift+J. Models, agents, and privacy are here.
+
+Agents | Agentes | The section where you choose where the next chat is born.
+
+Default Environment | Ambiente padrão | The place of the next chat. Choose Local.
+
+Local | No seu computador | Sees the open folder and the USB drive mounted on that machine.
+
+Cloud | Na nuvem | A virtual machine. It does not see your USB drive or your desktop.
+
+Last Used | O último usado | Repeats the place of the previous chat. If the last one was Cloud, the next one is too. Do not leave this as the default.
+
+New Chat or New Agent | Conversa nova | The old chat does not move. The test of the Local default is always a new chat.
+
+Move to | Mover para | On the menu of a chat that is already open. Move to, then Local, tries to bring it to the computer. The folder must be open.
+
+Desktop | Área de trabalho | On a cloud agent, this is the virtual machine's screen, not your PC.
+
+Ask, accept, and refuse
+
+On the screen | In Portuguese | What to do
+
+Agent | Agente que faz | Searches, edits files, and runs commands. This is the working mode.
+
+Ask | Perguntar | Only reads and answers. It does not change a file. Use it to understand before you allow an edit.
+
+Plan | Planejar | Researches, asks, and writes the plan. It edits only after you approve.
+
+Debug | Depurar | Investigates a bug you can repeat, with the application running.
+
+Design | Desenhar na tela | You point at a piece of the page and the agent edits the code for that piece.
+
+Tab | Tecla Tab | Accepts the gray suggestion while you type. It is not a conversation.
+
+Accept | Aceitar | Keeps the change. Read the diff first.
+
+Reject | Rejeitar | Throws the change away.
+
+diff | Diferença | What left and what came in. This is the review. The agent's sentence does not replace the diff.
+
+Models | Modelos | Which intelligence answers. A faster one for small work. A stronger one for many files.
+
+Command Palette | Paleta de comandos | Cmd+Shift+P. If you cannot find a button, search the English name here.
+
+Keyboard Shortcuts | Atalhos de teclado | The official list. The shortcuts in this book may have been remapped.
+
+Files, Git, and the USB drive
+
+On the screen | In Portuguese | What to do
+
+Source Control | Controle de versão | The Git panel. It shows what changed in the folder.
+
+Commit | Gravar uma versão | You confirm that you read the diff. The agent does not have to commit for you.
+
+Branch | Ramo | A separate line of work, so it does not mix with the stable project.
+
+Push | Enviar | Sends the commits to the remote repository.
+
+Pull request | Pedido de junção | Asks the group to look at the branch before joining it to the project.
+
+Merge | Juntar | Brings the branch in. Only after review.
+
+Terminal | Terminal | The command screen. The agent can run a test here. You allow what is dangerous.
+
+Workspace | A pasta aberta | The set of files the local agent can see.
+
+Save to workspace | Salvar na pasta do projeto | Stores the plan inside the project, so the group can find it later.
+
+Indexing | Indexação | Cursor reading the project so it can search by meaning, not only by word.
+
+Rules and permission to run a command
+
+On the screen | In Portuguese | What to do
+
+Customize | Personalizar | Where rules, skills, and outside tools live.
+
+Rules | Regras | Standing instructions for the project. The chat agent obeys them. Tab does not.
+
+Add Rule | Adicionar regra | Creates a rule file. You can also ask with /create-rule.
+
+Approvals & Execution | Aprovações e execução | In Settings, then Agents. Decides whether a command runs alone or asks permission.
+
+Auto-review | Revisão automática | The recommended one. It runs what is safe and asks about the rest.
+
+Allowlist | Lista permitida | Only what you listed runs without asking.
+
+Run Everything | Rodar tudo | Nothing asks permission. Do not use this on a real project.
+
+Sign in | Entrar | Sign in to the account. Without an account, part of the agent does not work.
+
+A one-hour script for the group
+
+One person shares the screen. The others do not guess the menu: they check the word in this chapter. The hour ends with one small change accepted, not with a vocabulary lesson.
+
+- Open the project folder (Open Folder) and read the selector. If it says Cloud, stop and switch to Local before any request.
+- Ask, in Portuguese: "Explain this project. Point me to where I should start reading."
+- Pick one small change. Ask for the result, what must not change, and how to check.
+- Read the diff together. Accept only what the group understood. Reject the rest and say what was missing.
+- Write down the English word that stopped someone. At the next meeting it is already in this chapter. If it is not, add a line to the project rule asking for replies in Portuguese.
+
+Ask in Portuguese
+
+The menu is in English. The request does not have to be. Write the way the group speaks. If the agent answers in English, say: "Reply in Portuguese." To make that stick, save a user rule in Customize, then Rules.
+
+====================================================================
+Basic — USB drive and GitHub
+(Portuguese title: Pendrive e GitHub)
+
+The USB drive holds the folder. You carry the folder to the other computer and it opens. GitHub holds another copy, on a computer on the internet. To reach it, the program needs an account, a password or a key, the internet, and permission. When one of those is missing, the screen waits. The USB drive did not fail. It is a different path, with a front door.
+
+Why the USB drive is simpler
+
+Copying a folder does not ask who you are. The file leaves one place and enters another. Two friends agree who has the drive, and they work. There is no server in the middle.
+
+The limit is simple too. If both edit at the same time, each on their own copy, neither knows what the other changed. When it is time to join them, you have sheet against sheet. The file date does not solve it: both may have changed different parts on the same day.
+
+Why the GitHub connection does not finish
+
+GitHub is not the folder. It is an address. The word on the screen is usually one of these:
+
+On the screen | In Portuguese | Why it stops
+
+Sign in | Entrar na conta | Without an account, the address does not open the door.
+
+Clone | Baixar uma cópia | Brings the project from the internet into your folder. It needs the right address and permission.
+
+Push | Enviar daqui para lá | Sends your changes. Without a login, or without write permission, it stops and waits.
+
+Pull | Trazer de lá para cá | Fetches what the other person already sent. Without the internet, there is nothing to fetch.
+
+Authentication failed | A identificação falhou | The password, the token, or the key was not accepted. The USB folder is not even read.
+
+Permission denied | Permissão negada | The account got in, but this project is not yours to write.
+
+SSH | Uma chave, em vez de senha | Another way to prove who you are. Without the key installed, the connection does not pass.
+
+Staring at that screen does not bring the USB drive closer to GitHub. They are two copies, and they meet only if the door opens. While the door stays shut, the work continues in the folder you already have in your hand.
+
+Why Cursor's cloud asks for that connection
+
+The cloud computer does not have your USB port. It receives the project only if the project is at an internet address, such as GitHub. That is why the cloud agent and the USB drive do not meet. For the folder on the USB drive, the chat must be Local, on the computer where the drive is mounted.
+
+How to work in the USB folder
+
+- Wait until the system shows the drive. On Linux, in /media or /mnt. On Windows, as a drive, for example E:.
+- In Cursor, File, then Open Folder, and choose the folder inside the drive. Do not choose a single file.
+- A new chat, with the selector on your computer, not on Cloud.
+- Ask in Portuguese. Read the diff. Accept only what the group understood.
+- Before you unplug the drive, eject it from the system. Pulling it out while it is still writing corrupts a file.
+- For a friend, hand over the drive or copy the whole folder. Agree who edits. Two edits at the same time do not join themselves.
+
+Why Git exists, and why it is not GitHub
+
+Git is a notebook inside the folder: what changed, in what order, with a sentence saying why. That notebook can live in the USB folder itself. It does not need an account or the internet. GitHub is only a place on the internet to keep that notebook when people are not sharing the same drive.
+
+The notebook becomes worth it when the group grows and each person works from home. Then the internet copy avoids sheet against sheet. Until that day, Cursor on the computer plus the USB folder is a complete way to work. The GitHub connection can wait.
+
+For the group
+
+At the next meeting, open the USB folder with Open Folder and read the selector before the request. If someone wants to "put it on GitHub" and the screen asks for Sign in, stop. The day's work is in the folder. The account waits until the group decides it needs the third place.
+
+====================================================================
+Basic — Install, sign in, and open a project
+(Portuguese title: Instalar, entrar e abrir um projeto)
+
+Download the installer from cursor.com/download. Mac needs macOS 12 or newer. Windows needs Windows 10 or newer. On Linux, the apt or dnf package is better than the AppImage: it creates an icon, updates itself, and installs the command-line tools.
+
+Linux, the recommended way
+
+Debian and Ubuntu:
+
+curl -fsSL https://downloads.cursor.com/keys/anysphere.asc | gpg --dearmor | sudo tee /etc/apt/keyrings/cursor.gpg > /dev/null
+echo "deb [arch=amd64,arm64 signed-by=/etc/apt/keyrings/cursor.gpg] https://downloads.cursor.com/aptrepo stable main" | sudo tee /etc/apt/sources.list.d/cursor.list > /dev/null
+sudo apt update
+sudo apt install cursor
+
+Fedora and RHEL use the yum repository at https://downloads.cursor.com/yumrepo, then sudo dnf install cursor. The AppImage exists for anyone who needs a portable file: give it permission to run, then open the file.
+
+Sign in and open the folder
+
+- Open Cursor and sign in.
+- Open the project folder, not a loose file. The agent needs the whole set.
+- Wait for indexing to start. It allows search by meaning, not only by text.
+- If the project already uses Git, the source-control panel shows what changed. Use that from the first day.
+
+Practice now
+
+Open a small project, yours or an example. Do not ask for a feature yet. In the next chapter you will recognize the screen. In the one after that, you will ask for an explanation.
+
+Account and plan
+
+There are individual, team, and enterprise plans. What changes is the quota, the administration, and some features, such as required team rules. The way you edit code is the same.
+
+====================================================================
+Basic — The screen, piece by piece
+(Portuguese title: A tela, peça por peça)
+
+If you have used VS Code, the middle is familiar: on the left are the explorer, search, Git, and extensions; in the center, the files; at the bottom, the terminal. What Cursor adds is the agent panel and a layout just for it.
+
+Shortcut | What it is for
+
+Cmd+I or Cmd+L | Opens or closes the agent side panel.
+
+Cmd+E | Switches the agent layout, when you want the chat in front.
+
+Cmd+. | Opens the mode menu.
+
+Cmd+Shift+J | Opens Cursor settings.
+
+Cmd+, | Opens the general editor settings.
+
+Cmd+Shift+P | Command palette. If you cannot find a button, search here.
+
+What to look at in the agent panel
+
+- The text field. This is where the request goes in. @ pulls in context. / pulls in a command or a skill.
+- The mode selector. Agent, Ask, Plan, Debug, and, in the browser of the agents window, Design. Shift+Tab rotates the modes.
+- The model selector. It changes the model for the rest of this chat. Cmd+/ walks the list.
+- The context ring. It shows how much of the model's window is already full. Click it to see the split: system, tools, rules, skills, MCP, subagents, and the conversation.
+
+There is also voice, on the microphone in the field or with Cmd+Shift+Space. Speak the request, read the transcription, and only then send.
+
+Do not memorize the whole screen
+
+On the first day, it is enough to open the agent, know where the mode is, and know where the model is. The rest appears when the task asks for it.
+
+====================================================================
+Basic — Tab, the suggestion while you type
+(Portuguese title: Tab, a sugestão enquanto você escreve)
+
+While you write, Cursor offers a continuation in gray. That tool is called Tab. It is for the piece you already understand: the body of a function, a test like the one above, a field that was missing.
+
+Shortcut | Effect
+
+Tab | Accepts the suggestion.
+
+Cmd+Right | Accepts only the next word.
+
+Esc | Dismisses the suggestion and gives control back to you.
+
+When to trust it and when not to
+
+Accept when the suggestion is what you were going to type. Refuse when it invents a function name, changes a contract, or repeats a mistake already in the file. Tab does not read the project rules. A rule in .cursor/rules does not change what Tab proposes. The chat Agent is the one that obeys rules.
+
+Practice now
+
+Open a file you know. Start a small function and stop in the middle. Accept with Tab if it is right. If it is almost right, accept word by word with Cmd+Right and fix the rest by hand.
+
+====================================================================
+Basic — Inline edit
+(Portuguese title: Edição inline)
+
+Inline edit is the middle path between typing alone and opening a chat. You mark the code, say what you want, and Cursor proposes the swap right there.
+
+- Select the piece. If you select nothing, the command applies to the region where the cursor is.
+- Press Cmd+K.
+- Write a short request: "extract this check into a function" or "translate these messages into Portuguese."
+- Enter sends. Option+Enter asks a quick question, without editing.
+- Cmd+Shift+Backspace cancels.
+
+Cmd+Shift+K switches the focus of the field and also sends the selection to the edit. Inside the terminal, Cmd+K opens something else: a bar that generates a command. Cmd+Enter runs that command, and Esc only accepts it into the terminal line, without running it.
+
+A rule that does not enter here
+
+User rules, the global preferences of the chat, do not apply to inline edit. If the tone, the language, or a project pattern must be obeyed, use the Agent.
+
+A request that works in this mode
+
+"Replace this loop with map and keep the same result when the list is empty." A request for the whole file, or for another file, is already Agent work.
+
+====================================================================
+Basic — The first conversation with the Agent
+(Portuguese title: A primeira conversa com o Agent)
+
+Open the panel with Cmd+I. The first useful message, in a project you do not yet know, is this:
+
+Explain this project. Point me to the entry points, the main modules, and what I should read before changing anything.
+
+The agent searches, opens files, and returns a map. That is faster than walking folder by folder. When the map makes sense, ask for three small, safe improvements, with the cost of each, and wait for you to choose. Only then ask it to build the one you chose.
+
+While the reply is coming out
+
+Shortcut | Effect
+
+Enter | Queues the message. It waits until the current task finishes.
+
+Cmd+Enter | Sends now and joins the text to your last message.
+
+Enter twice | Steers an adjustment at the next tool use, without throwing away work already in progress. This behavior is on the web and is arriving in the agents window.
+
+Cmd+Shift+Backspace | Cancels generation.
+
+Cmd+N or Cmd+R | New chat.
+
+Cmd+T | New chat tab.
+
+Cmd+[ and Cmd+] | Previous chat and next chat.
+
+Cmd+W | Closes the chat.
+
+Tab, with the chat field focused and no code suggestion in front, cycles between messages. Esc takes the focus off the field.
+
+A new chat, or the same one?
+
+Stay in the same chat while you are on the same feature. Open another when you change subject, when the agent repeats the same mistake, or when the reply starts mixing old tasks. A long chat collects noise.
+
+====================================================================
+Basic — Give context with @
+(Portuguese title: Dar contexto com @)
+
+Type @ in the agent field. Cursor lists what you can attach. You do not need to mark everything: if the request says "the login flow," the agent searches. Mark a file when you want to nail the target. An irrelevant file competes with the right file.
+
+Mention | What enters the chat
+
+@file or @folder/ | The file, or the folder. After you choose the folder, / goes one level down.
+
+@Terminals | The terminal output.
+
+@Chats | A piece of an earlier chat, without copying the whole chat.
+
+@Commit | The diff of what has not been committed yet.
+
+@Branch | The diff of the branch against the main one. Useful for "what am I doing?" and "review this branch."
+
+@Browser | Context from the built-in browser.
+
+Selection, clipboard, and image
+
+- With code selected, Cmd+Shift+L sends the selection to the chat. Cmd+L opens a new chat already holding that selection.
+- Copy a piece or a log and paste with Cmd+V to attach it as context. Cmd+Shift+V pastes the raw text into the field.
+- Drag an image, or paste a screenshot with Cmd+V, to show a screen, an error, or a mockup.
+
+Practice now
+
+Ask "Explain only this function" with the function selected and Cmd+Shift+L. Then ask the same thing without a selection, naming the function. Compare how well each reply hits.
+
+====================================================================
+Basic — Read the diff and decide
+(Portuguese title: Ler o diff e decidir)
+
+When the Agent edits, the changes appear as a diff: what left and what came in. Read the diff with the same attention you would give a colleague. The reply text explains the intention. The diff shows what actually changed. The two often disagree.
+
+Situation | Shortcut
+
+Accept all suggested changes | Cmd+Enter
+
+Reject all | Cmd+Shift+Backspace
+
+You can accept file by file, or hunk by hunk, with the buttons on the diff itself. Do that when one part is good and another is not. Rejecting everything and rewriting the request is usually cleaner than trying to fix five mistakes with a generic sentence such as "fix it."
+
+What to check before you accept
+
+- Does the change do what you asked, and only that?
+- Did a file you did not want touched enter the diff?
+- Did the project's test, types, or lint run? If not, ask: "run the check this project already uses."
+- Is there a secret, a debug comment, or a generated file in the middle of the change?
+
+You sign the code
+
+Accepting the diff is your decision. The agent does not become the author in place of the person who commits.
+
+====================================================================
+Basic — The shortcuts worth memorizing
+(Portuguese title: Os atalhos que valem decorar)
+
+Memorize these. Look up the others in the palette until they become habit.
+
+Shortcut | Action
+
+Cmd+I | Agent panel
+
+Cmd+K | Inline edit in the editor, or generate a command in the terminal
+
+Tab | Accept the Tab suggestion
+
+Shift+Tab | Rotate the agent mode
+
+Cmd+/ | Change model
+
+Cmd+Shift+L | Send the selection to the chat
+
+Cmd+Enter | Send now, or accept the changes when they are on the screen
+
+Cmd+Shift+Backspace | Cancel generation, or reject the changes
+
+Cmd+Shift+P | Command palette
+
+Cmd+Shift+J | Cursor settings
+
+@ and / | Context and commands, inside the agent field
+
+Cmd+N | New chat
+
+The official list, including what can be remapped, is in Keyboard Shortcuts.
+
+====================================================================
+Basic — From the request to the result
+(Portuguese title: Do pedido ao resultado)
+
+- Open the project folder and sign in.
+- Ask for the map of the code, as in the first-chat chapter. Read it. If an important module does not appear, ask about it.
+- Ask for three small improvements and choose one. A good first target: interface text, a visible bug, a missing test on a pure function.
+- Describe the result and how to check. Example: "On the search form, the button stays disabled while the list is empty. Do not change the style of the other buttons. Run the test for this screen."
+- Let the agent work. If you remember a detail in the middle, Enter queues it. If the detail changes the current request, Cmd+Enter sends it now.
+- Read the diff. Accept what is right. Reject the rest and say what was missing, with the file in the sentence.
+- Ask for the check the project already has: test, types, or lint. Look at the output, not only the "it passed" in the reply.
+
+A change that crosses several files, or that you do not yet know how to design, does not enter this flow. It waits for Plan mode, in the intermediate level.
+
+The smallest request that is already good
+
+An observable result, a limit on what must not change, and a command that checks. Three lines are enough.
+
+====================================================================
+Basic — Practice the basics
+(Portuguese title: Pratique o básico)
+
+- Open the agent and ask for the project map in a new chat. Write down two files you did not know.
+- Select a function and use Cmd+Shift+L. Ask for a ten-line explanation, with no edit.
+- On the same function, use Cmd+K for a local adjustment: a name, a comment, or an edge case. Accept or reject by looking at the diff, not the message.
+- Write a test or a repeated piece and use Tab. Accept one whole suggestion and, on the next, only the next word.
+- Ask for a small change with a result, a limit, and a check. Before you accept, answer: did a surprise file enter the diff?
+
+If the five came out without you hunting for a button in the dark, the basics are done. The intermediate level begins when the task no longer fits in a single request.
+
+A common mistake at this point
+
+Opening one endless chat for different subjects. One chat per task. The history is still there. You do not need to carry everything forward.
+
+====================================================================
+Intermediate — The Agent modes
+(Portuguese title: Os modos do Agent)
+
+The mode selector is in the agent field. Shift+Tab rotates the modes. Cmd+. opens the menu. Use the right mode before you write a long request in the wrong one.
+
+Agent
+
+This is the default. It searches, edits, runs commands, and returns a diff. It is for a task you can already describe and that does not need a design first.
+
+Ask
+
+Ask reads and answers. It does not edit. Use it to understand a flow, compare two approaches, or review an idea before you allow code. In the CLI, the command is /ask and the flag is --mode=ask.
+
+Plan
+
+Press Shift+Tab until Plan, or let Cursor suggest the mode when the request looks large. The agent researches the repository, asks questions, writes a plan, and waits for you to approve. The plan opens as Markdown. You can cut a step, change a file, and add what it did not see.
+
+By default the plan stays in your user folder. Save to workspace writes it to .cursor/plans/, for the team and for a future agent. Use Plan when there is more than one possible design, many files, a loose requirement, or an architecture decision. A task you have done ten times can go straight to Agent.
+
+If the implementation comes out crooked, go back to the plan instead of stacking corrections. Undo the change, tighten the plan, and run it again. It usually comes out cleaner.
+
+Debug
+
+Debug is for a bug you can reproduce and cannot explain: a race condition, a leak, a regression. The order is fixed. The agent raises hypotheses, adds logs that go to a local server in the extension, asks you to reproduce, reads the logs, fixes a little code, and at the end removes the instrumentation. Follow the reproduction steps exactly. Say what should happen and what does happen.
+
+Design
+
+Design Mode lives in the browser of the agents window, not in the ordinary editor. Open the browser and toggle it with Cmd+Shift+D. You click an element, select several, draw a region with Shift and drag, or speak. Cmd+L sends the element to the chat. Option-click sends the element to the field. The agent receives the component and a screenshot. You can send the next adjustment before the previous one finishes. The docs themselves recommend Composer 2.5 for this interface flow.
+
+Choose in one line
+
+A question with no edit: Ask. A clear task: Agent. A large or ambiguous task: Plan. A bug that needs a run: Debug. A visual adjustment with the app running: Design.
+
+====================================================================
+Intermediate — How to ask
+(Portuguese title: Como pedir)
+
+A good request has four parts, not always in four paragraphs: the result, the limit, the way you will know it is done, and the context only you have.
+
+Free shipping should appear at checkout when the subtotal passes R$ 199.
+Do not change the tax calculation.
+Cover the cases 198.99 and 199.00 in the test that already exists for the cart.
+The limit value is in config/frete.ts.
+
+What to leave out
+
+- The whole folder marked with @, "just to be sure."
+- The history of another task pasted into the field. Use @Chats if you need a piece.
+- Literary style: "be professional and robust." Say the real constraint.
+- A double request with no order. "Refactor and also explain" becomes a diff mixed with a lesson. Ask for one, then the other.
+
+Context that fills up
+
+Each chat shares a limited window with the model. Files, tools, rules, skills, and MCP take space. When the window gets tight, Cursor summarizes the start of the chat. The ring beside the field shows the split. A chat that has been summarized many times loses focus: open another and point at what matters.
+
+Change model in the middle of the chat if exploration needed a fast model and the implementation needs a stronger one. The change applies from that point on. The default is in Cursor Settings, under Models.
+
+Rewrite this request
+
+"Improve the login." Becomes: "After three wrong passwords, the screen shows the message that already exists in erros.login.bloqueado and does not call the API again for 30 seconds. Do not change the layout. The test is in login.test.ts."
+
+====================================================================
+Intermediate — Rules and AGENTS.md
+(Portuguese title: Regras e AGENTS.md)
+
+The model does not remember the project between chats. A rule is what enters the start of the context whenever it applies. There are four sources: project rules in .cursor/rules, your rules in Customize then Rules, team rules in the dashboard, and AGENTS.md.
+
+The .mdc file
+
+A project rule is an .mdc file. A loose .md file inside .cursor/rules is ignored, because it has no frontmatter. If you want plain Markdown, use AGENTS.md in the root or in a subfolder.
+
+Create it from the chat with /create-rule, or in Customize, then Rules, then Add Rule. The rule type comes from three fields:
+
+alwaysApply | description | globs | When it enters
+
+true | anything | anything | In every chat. The other fields are ignored.
+
+false | empty | filled | When a file that matches the pattern is in context.
+
+false | filled | empty | When the agent judges the description relevant.
+
+false | empty | empty | Only if you mention the rule with @.
+
+---
+globs: src/components/**/*.tsx
+alwaysApply: false
+---
+
+- Export the component by name, not as default.
+- Style stays in the CSS module next to the component.
+- Read @src/components/Button.tsx before creating a new component.
+
+Several patterns in the same field are separated by commas: docs/**/*.md, docs/**/*.mdx. An @file mention inside the rule points at the path. That file's contents are not pasted into the prompt. The agent reads it if it needs to. Whatever must always be in context must be written in the body of the rule.
+
+AGENTS.md
+
+It is for a short instruction, with no metadata. You can have an AGENTS.md in the root and others in frontend/ or backend/. The one in the more specific folder wins and adds to the parents.
+
+What not to put in
+
+- A whole style manual. That is a linter's job.
+- Every command the agent already knows, such as a generic npm test.
+- A rare case. A good rule is born from a mistake that repeated.
+- A copy of a file from the repository. Point at the canonical example.
+
+Keep each rule under about 500 lines and split by subject. Put it in Git. When there is a conflict, the order is team rule, then project rule, then user rule. A rule does not change Tab. A user rule does not enter inline edit (Cmd+K).
+
+The first rule that is worth it
+
+Write only the real commands of the repository and a pointer to the model file. Add a line on the day the agent repeats the same mistake.
+
+====================================================================
+Intermediate — Models, context, and what not to send
+(Portuguese title: Modelos, contexto e o que não enviar)
+
+The model selector is in the agent field. Cmd+/ walks the models. Cmd+Option+/ is the other documented switch. The change applies to the rest of the chat. There are models from Anthropic, OpenAI, Google, Cursor, xAI, Moonshot, Meta, and others. The list and the price live on Models & Pricing and change often. Do not memorize a price table.
+
+How to choose without a spreadsheet
+
+- A local edit, a rename, a mirrored test, interface text: a faster model.
+- Several files, an API design, a bug that crosses layers: a stronger model.
+- Interface work in the agents window, in the Design Mode flow: the docs recommend Composer 2.5.
+- Some models appear only in Max Mode on old plans billed per request, and a long window costs more. If the selector warns you, read the warning before you let the chat grow.
+
+Indexing and what the agent should not see
+
+.cursorignore hides files from the agent, in the same spirit as an ignore file. Use it for a local secret, a dump, a huge generated folder, and data that should not go to the model. The sandbox also treats .cursorignore as a protected path. That does not replace refusing to paste a token into the chat.
+
+In Settings, then Agents, then Approvals & Execution, you can restrict reading outside the workspace (Workspace mode, from Cursor 3.23). The System default lets the agent read outside the folder. In a project with a sensitive file next door, Workspace is the soberer setting.
+
+Do not paste this
+
+An API key, a password, a session cookie, a production dump, a client document, the contents of .env. Describe the variable name. Leave the value in the environment.
+
+Privacy and retention depend on the plan and the model. Some frontier models require an explicit acceptance of retention for abuse prevention, even when the data is not used for training. Read the account warning before you turn on a new model in a private repository.
+
+====================================================================
+Intermediate — Terminal, browser, image, and voice
+(Portuguese title: Terminal, navegador, imagem e voz)
+
+The Agent uses a real terminal: it installs a dependency, runs a test, starts the server. It also uses a browser to look at the page it just changed. Image and voice enter through the field: drag the screenshot, paste with Cmd+V, or dictate into the microphone and review the text before you send.
+
+Who authorizes the command
+
+In Settings, then Agents, then Approvals & Execution, there are three run modes:
+
+Mode | Behavior
+
+Auto-review | The recommended one. What is on the allow list runs. Other shell commands enter the sandbox when they can. The rest goes through a classifier. The classifier makes mistakes: it can allow what you would have blocked.
+
+Allowlist | Only what you listed runs without asking. Stable behavior, a short list.
+
+Run Everything | Every tool runs with no question and no sandbox. Only if you accept that risk.
+
+The sandbox lets the command work in the project folder and cuts the network and sensitive paths, including .git/config and .git/hooks. On Linux it uses Landlock and seccomp. An old kernel makes Cursor go back to asking for approval. There is also extra protection for the browser, for deleting a file, and for writing outside the workspace.
+
+A sentence in Portuguese fits in .cursor/permissions.json or in ~/.cursor/permissions.json, in the block_instructions field. Example: "Every AWS CLI command needs my approval first." You can ask the agent itself to write that. The team file, when it exists, wins over your machine.
+
+In the terminal, without opening the chat
+
+Cmd+K generates a command from a sentence. Cmd+Enter runs it. Esc only puts the command on the line.
+
+Going back
+
+If the chat shows a restore of an earlier point, use it to undo a bad stretch. Git remains the net that does not depend on the interface. A small commit, before a risky request, costs little.
+
+====================================================================
+Intermediate — Git without losing control
+(Portuguese title: Git sem perder o controle)
+
+Git is the notebook of changes. GitHub is a place on the internet for that notebook. You can use Cursor on the USB folder without that account. That path is in "USB drive and GitHub." What follows here is for when the notebook already exists.
+
+Branch, stage, and commit live in the source-control panel. The agent does not have to commit for you. It is often better if it does not: the commit is the moment you state that you read the diff.
+
+Git context worth mentioning
+
+- @Commit, the diff of what has not entered the commit yet: "review only this."
+- @Branch, the diff against the main branch: "summarize what this branch does" or "look for a regression in this set."
+
+A cycle that does not become a mess
+
+- A new branch for the task. A name a colleague understands.
+- The request in Agent or in Plan.
+- You read the diff in the panel, not only the chat summary.
+- Test. If it fails, paste the output with @Terminals or Cmd+V and ask for a fix of the failure, not a rewrite.
+- Your commit, with a message that says why.
+
+What not to let the agent do alone
+
+A forced push, a commit of .env, a change to a Git hook, a rebase of a shared branch. The sandbox already protects part of this. Your rule and your reading protect the rest.
+
+====================================================================
+Intermediate — Skills, / commands, and MCP
+(Portuguese title: Skills, comandos / e MCP)
+
+Type / in the field. Commands and skills appear. Enter attaches the skill to that message. Option+Enter, or Use as Mode, turns the skill into a custom mode: it stays for the whole chat until you leave. That is for a review checklist or a test playbook, not for a one-shot command.
+
+Skills that already come ready
+
+Command | Use
+
+/create-rule | Creates an .mdc rule with the right frontmatter.
+
+/create-skill | Creates a skill, with SKILL.md.
+
+/create-hook | Creates a hook and updates hooks.json.
+
+/create-subagent | Creates a subagent with its own role.
+
+/review, /review-bugbot, /review-security | A general review, a bug hunt, or a security review.
+
+/update-cursor-settings | Finds and changes the right Cursor or editor setting.
+
+A rule enters whenever its type says so. A skill enters when the agent judges that it fits, or when you call it with /. That is why a skill does not fill the window the way a giant rule does. You can stop automatic invocation with disable-model-invocation: true in the frontmatter. Then it enters only if you call it.
+
+MCP
+
+MCP (Model Context Protocol) connects the agent to a tool and to data outside the repository: an issue, a database, a log, internal documentation. Install it in Customize or describe the server in mcp.json. The protocol covers tools, prompts, resources, and, in Cursor, interactive views returned by the tool.
+
+The agent calls the tool when the request needs it. You can also name it. Turn servers on and off in Customize. In Auto-review, an MCP tool that is not on the list goes through the classifier. Do not put a secret in the body of an mcp.json that goes into Git. A team or a company can allow or block servers in the dashboard.
+
+When to create each thing
+
+A repeated style or command mistake: a short rule. A procedure with steps and maybe a script: a skill. A system outside the repository: MCP. Do not create a hook or a subagent yet. That is the advanced level.
+
+====================================================================
+Intermediate — Practice the intermediate level
+(Portuguese title: Pratique o intermediário)
+
+- Take a real task with more than one file. Switch to Plan with Shift+Tab. Answer the questions. Cut a useless step from the plan before you build. Save the plan to the workspace.
+- On a bug you can repeat, use Debug. Follow the reproduction it asks for. Check that the instrumentation is gone at the end.
+- Write an .mdc rule with alwaysApply: false and a narrow globs pattern. Ask for an edit in a file that matches and in one that does not. See the difference.
+- Open AGENTS.md in the root with three lines: the test command, the type command, and the file that serves as the model.
+- In Approvals & Execution, identify the current mode. If it is Run Everything on a project that is not a sandbox, go back to Auto-review.
+- Call /review on a diff you just made. Treat the comment as a colleague's review: accept what is a bug, dismiss what is taste.
+
+The advanced level begins when the work no longer fits on your open machine: a cloud agent, review on the pull request, several agents, and an automatic brake when the loop goes wrong.
+
+====================================================================
+Advanced — Cloud Agents
+(Portuguese title: Cloud Agents)
+
+A Cloud Agent runs outside your editor, on an isolated machine. It clones the repository, works on a branch, and opens a pull request. Use this when you choose the cloud. To avoid falling into it by accident, the procedure is in the basic level, in "On your computer, not in the cloud."
+
+You can start from several places:
+
+- In Cursor, choose Cloud in the menu under the agent field.
+- On the web, at cursor.com/agents.
+- In Slack or Linear, by mentioning @Cursor.
+- On GitHub or Bitbucket Cloud, by commenting @cursor on a pull request or an issue.
+- Through the Cloud Agents API.
+
+The machine has a desktop environment. The agent uses a mouse and a keyboard to open what it built, including the browser. That is why a cloud agent can check a screen, not only a unit test. The approval modes of your local machine do not apply: in the cloud it does not stop to ask for an OK on every command, because the machine is its own.
+
+Environment, secret, and MCP
+
+Connect the Git account (GitHub, GitLab, Azure DevOps, or Bitbucket), choose the repositories, and store the secret in the environment, not in the prompt. A badly prepared environment is the most common cause of an agent that "cannot find the project." The environment build and the snapshot live in the cloud agent settings. It is worth making install and test reproducible before you delegate a large task.
+
+MCP in the cloud accepts HTTP and stdio. HTTP is the recommended path: the credential does not stay inside the agent's machine, and the call goes through the backend. Stdio runs inside the VM, so the agent can see the configuration. SSE is not supported in this mode. The MCP dropdown at cursor.com/agents connects personal servers. The team configures the shared ones in the dashboard, under Plugins & MCPs.
+
+User rules, team rules, and repository rules (.cursor/rules and AGENTS.md) apply to the cloud agent. A user hook in ~/.cursor/hooks.json does not go along: the VM does not have your personal folder. A repository hook, in .cursor/hooks.json, does go along.
+
+What to delegate
+
+A task with a checkable definition of done: a failing test, a well-written issue, a migration with a plan already accepted. A task where you still do not know what you want stays in Plan, on your machine, until the plan is short enough for another person to carry out. The remote agent is that other person.
+
+====================================================================
+Advanced — The command line
+(Portuguese title: A linha de comando)
+
+On macOS, Linux, and Windows with WSL:
+
+curl https://cursor.com/install -fsS | bash
+agent --version
+
+On native Windows, the installer is PowerShell: irm 'https://cursor.com/install?win32=true' | iex. Add ~/.local/bin to PATH if the agent command does not appear. Manual update: agent update. The CLI tries to update itself.
+
+Modes and review
+
+- Shift+Tab rotates Agent, Plan, and Ask. /plan and --mode=plan open Plan. /ask and --mode=ask only read. /debug enters Debug.
+- agent -p or --print answers with no interface. That is the path for a script and for CI. Treat it as automation with real permission: the run mode and the sandbox still apply.
+- Ctrl+R reviews the changes. i adds an instruction. The arrows switch files.
+- Shift+Enter breaks the line in several modern terminals. In tmux, use Ctrl+J. Ctrl+D exits, and it asks for the second press.
+
+Useful everyday commands: /model, /mcp list, /sandbox, /run-everything (the alias is /auto-run), /max-mode on old plans, /goal for an objective that stays until it is done. /loop repeats a request or a skill. If you do not set the interval, the agent chooses when to wake. Stop the loop when the objective is over.
+
+A skill becomes a persistent mode in the CLI too: in the / menu, Option+Enter keeps the skill active.
+
+Headless is not less dangerous
+
+An agent -p inside CI sees what the job sees. A CI secret, the network, and writing to the repository need the same policy you would use for any script. Start in Ask or with the sandbox, not with Run Everything.
+
+====================================================================
+Advanced — Subagents
+(Portuguese title: Subagentes)
+
+A subagent is a delegated agent. It does not see the parent's history. The parent writes a complete request, the subagent works in a clean window, and it returns a final message. That is for long research, parallel work, and an independent check. It is a poor fit for "format this file": that is a skill.
+
+Two already exist, and the Agent calls them on its own. Explore searches the repository with a faster model, in parallel searches, and does not dump that reading into your chat. Browser keeps the DOM and the screenshots and returns only what matters.
+
+Mode | Effect
+
+Foreground | The parent waits. Use it when the next step depends on the answer.
+
+Background | The parent continues. Use it for long or parallel work.
+
+Create your own
+
+A project file in .cursor/agents/name.md. Your file, for all projects, in ~/.cursor/agents/. There are also compatible folders .claude/agents and .codex/agents. When names conflict, .cursor/ wins, and the project one wins over your user one. /create-subagent writes the file.
+
+---
+name: verificador
+description: Checks whether the task is finished. Use after an implementation.
+model: inherit
+readonly: true
+---
+
+Run the tests in the requested scope.
+Say what passed, what failed, and what was not checked.
+Do not change a file.
+
+model: inherit uses the parent's model. A specific id forces another model. readonly: true removes edits and commands that change state. is_background: true does not block the parent. The description is what the agent reads to decide whether to delegate: write when to use it, not a slogan.
+
+Skill or subagent
+
+A repeatable step, in one window: a skill. Research that dirties the context, parallel work, or a second opinion with a clean context: a subagent.
+
+====================================================================
+Advanced — Hooks
+(Portuguese title: Hooks)
+
+A hook is a process defined in .cursor/hooks.json in the project, in ~/.cursor/hooks.json on your machine, or installed by a plugin. The script speaks JSON over stdio. /create-hook creates the skeleton. There is a Hooks tab in Customize and an output channel to see errors.
+
+Where they fire
+
+- Session: sessionStart, sessionEnd.
+- Tool: preToolUse, postToolUse, postToolUseFailure.
+- Shell and MCP: beforeShellExecution, afterShellExecution, beforeMCPExecution, afterMCPExecution.
+- File: beforeReadFile, afterFileEdit.
+- Conversation: beforeSubmitPrompt, preCompact, stop, afterAgentResponse, afterAgentThought.
+- Subagent: subagentStart, subagentStop.
+- Tab, separately: beforeTabFileRead, afterTabFileEdit.
+- Application: workspaceOpen, when the folder opens. It does not depend on a chat.
+
+Agent hooks apply to the chat and to the edit with Cmd+K. Tab hooks apply only to the inline suggestion. A Cloud Agent runs the repository's command hooks, including shell, file, tool, and the stop cycle. It does not run a Tab hook, workspaceOpen, a prompt-based hook, or the hooks.json in your user folder.
+
+A use that earns its place
+
+The stop hook can return followup_message and make the agent continue, with a cap on turns. The serious case is "run the test and keep going until it passes," with a scratch file that marks DONE and a maximum number of iterations. Without a cap, the loop spends quota and can widen the diff. The same repeating effect, with less plumbing, also exists in the /loop skill.
+
+A hook is production code
+
+It sees file paths and can block a tool. Review it the way you would review a CI script. Do not put a secret in a versioned script. Do not use a hook to hide from the reviewer an action that should appear in the diff.
+
+====================================================================
+Advanced — Bugbot, review, and automations
+(Portuguese title: Bugbot, revisão e automações)
+
+Bugbot reads the pull-request diff and comments on bugs, security, and quality, with a suggested fix. Turn it on in Automations, after connecting the repository in the dashboard: GitHub, GitLab, Bitbucket, Azure DevOps, or Origin. It runs on every PR update, or only when someone comments cursor review or bugbot run. It reads comments that already exist so it does not repeat them. Fix in Cursor opens the point in the editor. Fix in Web opens it at cursor.com/agents.
+
+On GitHub the check is named Cursor Bugbot. A finding, by default, publishes a neutral conclusion, not a failure. Requiring the check in branch protection guarantees that it ran. To block a merge because of a finding, you need the option to fail while an unresolved comment remains, if your plan has that option. There are also /review-bugbot and /review-security inside the editor, for a change that is not a PR yet.
+
+Optional file in the repository
+
+.cursor/config/bugbot.yaml adjusts drafts, frequency (everyPush or oncePerPr), review effort, and autofix (disabled, newBranch, or existingBranch). A missing field falls back to the default. A file over 64 KB is ignored. It is not required to begin.
+
+Automations
+
+The /automate skill creates an automation triggered by a schedule, a Slack message, a GitHub event, and other sources. /autopilot follows a pull request and handles a comment, a conflict, and a red check. This is the real advanced level: the trigger is no longer you sitting in the editor. Write the definition of done in the automation text with the same care as a Plan request. A vague automation produces a vague diff during other people's working hours.
+
+Order of adoption
+
+First Bugbot commenting, with no autofix. You read a week of comments. Only then turn on automatic fixes, and still on a new branch, so the diff stays visible.
+
+====================================================================
+Advanced — Team, integrations, and governance
+(Portuguese title: Time, integrações e governança)
+
+Team and Enterprise plans manage rules in the dashboard. A team rule is text, with an optional glob. Without a glob, it applies to every chat, in every repository. With a glob, it applies only when a file of that pattern is in context. When the texts conflict, the order is team, project, user. The ones that apply are added together.
+
+An admin can require the rule. Then the member cannot turn it off in Customize. A draft does not apply until someone activates it. An AI rule is not a security control. A secret, production permission, and a human review stay outside the prompt.
+
+Where Cursor meets the rest of the company
+
+- GitHub, GitLab, Azure DevOps, and Bitbucket: repository, Bugbot, and cloud agent.
+- Slack, Microsoft Teams, Linear, Jira, and Notion: start or follow work without opening the editor.
+- JetBrains and Xcode: there is a documented integration for people who do not live all day in Cursor.
+- Plugins and the marketplace: rules and skills packaged together. Importing a rules repository "by eye" does not work. They enter through a plugin, with .cursor-plugin/marketplace.json.
+
+A company also has SSO, SCIM, model control, MCP control, network policy, OpenTelemetry export, and security review. The useful chapter for someone who is not an admin: if a model disappeared, if an MCP does not connect, or if Auto-review is gray, the cause may be team policy, not your install. Auto-review, for example, needs Claude 4.5 Haiku to remain allowed, because the classifier uses that model as a fallback.
+
+The minimum for a small team
+
+One short required rule (the test command and what must never be committed), Bugbot on the main repository, and MCP only for the systems the team actually uses. The rest is decoration until the lack of it hurts.
+
+====================================================================
+Advanced — When the agent is wrong
+(Portuguese title: Quando o agente erra)
+
+Symptom and what to do, in this order:
+
+- The diff is too large or in the wrong place. Reject it. Rewrite the request with the file, the limit, and the test. Do not say only "that was not it."
+- The implementation does not match what you wanted, and the task was large. Go back to the plan. Undo. Adjust the plan. Run it again.
+- The same mistake for the third time. A new chat. The previous one already taught the model to insist. If the mistake is a repository convention, turn it into a line in a rule.
+- A bug that depends on running. Leave the guessing and go to Debug, with a reproduction. Paste the real error, through @Terminals or the screenshot.
+- The reply ignores an obvious file. Mark it with @. If the file should not even be read, it is probably outside the ignore and competing, or the chat is full.
+- The context ring is at the limit. Open another chat. Point at the saved plan, the branch diff with @Branch, and the rule. Do not paste the old chat.
+- A dangerous or surprise command. Refuse the approval card. If it repeats, write a block_instructions entry in permissions.json.
+- The cloud agent delivered a bad PR. Comment on the PR with the criterion that was missing, or close it and run again with a shorter request. Do not merge in order to "adjust as you go."
+
+The sentence that recovers the chat
+
+"Stop. Do not edit any more. Say which file you believe contains the cause and which test proves it." Only then allow the next edit.
+
+====================================================================
+Advanced — A way of working
+(Portuguese title: Um jeito de trabalhar)
+
+Someone who uses Cursor all day does not write a prettier prompt. They separate the work into types and do not mix the types in the same chat.
+
+Kind of work | Where to do it
+
+Understand someone else's code | Ask, or an Agent that only reads on the first request.
+
+A local change you can already see | Tab or Cmd+K.
+
+A new feature, several files | Plan, the plan saved in the repository, then Agent.
+
+A bug you can reproduce | Debug, with the error pasted in.
+
+A screen adjustment with the app open | Design Mode in the browser of the agents window.
+
+A task that can finish without you | Cloud Agent, with a test that decides by itself whether it passed.
+
+Other people's PRs, or yours before the merge | Bugbot, plus your reading of what the bot marked as neutral.
+
+What to leave written in the repository
+
+- A short AGENTS.md: how to test, how to start, what not to generate.
+- One rule per folder that has its own way, with globs, pointing at the model file.
+- A skill for the procedure you would repeat out loud to a new colleague.
+- A read-only subagent for "check whether it is finished," when the task is long enough for the agent to praise itself early.
+
+The test is the contract. A request with no way to fail becomes an opinion. A request with a test command becomes work that the agent, the cloud agent, and Bugbot can repeat.
+
+The job that remains
+
+Decide what to build, cut the plan, read the diff, refuse the strange command, and write the rule on the day the mistake repeats. The rest is a tool, and you have just seen the tools by level.
+
+====================================================================
+Advanced — Practice the advanced level
+(Portuguese title: Pratique o avançado)
+
+- Create .cursor/agents/verificador.md with readonly: true and a description of when to use it. Ask the Agent to delegate the check of a small change. Read whether it really separated the check.
+- Ask /create-hook for a beforeShellExecution hook that only records the command, without blocking. Check the output in the Hooks tab. Delete the hook if it is not going to stay.
+- Write three sentences in .cursor/permissions.json under block_instructions: a command that always asks for approval in your project. Test with a request that would try that command.
+- If the account has Cloud Agent, send a task with an automatic test, close the editor, and read the PR afterward. Write down what was missing in the request. That note becomes the next line of AGENTS.md.
+- If the repository is connected to Bugbot, open a small PR and read the comments. Mark what was a bug and what was noise. Adjust the yaml only if the noise is systematic.
+
+Whoever did the basic level, the intermediate level, and these exercises no longer depends on a video. The next chapter is a reference, not a lesson.
+
+====================================================================
+Advanced — Glossary and quick map
+(Portuguese title: Glossário e mapa rápido)
+
+The words that appear in English on the screen, and what to do with each one, are in the basic level: "The screen is in English."
+
+Name | Meaning in this book
+
+Tab | A suggestion while you type. It does not obey a project rule.
+
+Inline edit | Cmd+K in the editor. A local change. No user rule.
+
+Agent | A chat that searches, edits, and runs a command.
+
+Ask | A read-only mode.
+
+Plan | Research, questions, a plan, and only then code.
+
+Debug | A hypothesis, a log, you reproduce, a short fix, cleanup.
+
+Design Mode | Point at the screen, in the browser of the agents window.
+
+Rule | A standing instruction. Project, user, team, or AGENTS.md.
+
+Skill | A procedure on demand, called with / or pulled in by the agent.
+
+MCP | A tool and data from outside the repository.
+
+Subagent | A delegated agent, with a clean context.
+
+Hook | A script in the agent cycle.
+
+Cloud Agent | An agent on a remote machine, with a branch and a pull request.
+
+Bugbot | Automatic pull-request review.
+
+Auto-review | The recommended approval mode for a command, MCP, and fetch.
+
+Max Mode | A larger window on old plans billed per request. Some models require it.
+
+Official shortcuts
+
+Values as of October 2026. Remap them in Keyboard Shortcuts if you need to. On Windows and Linux, Cmd is Ctrl and Option is Alt.
+
+General
+
+Shortcut | Action
+
+Cmd+I and Cmd+L | Side panel
+
+Cmd+E | Agent layout
+
+Cmd+. | Mode menu
+
+Cmd+/ | Walk the models
+
+Cmd+Shift+J | Cursor settings
+
+Cmd+Shift+Space | Voice
+
+Cmd+, | General settings
+
+Cmd+Shift+P | Command palette
+
+Chat
+
+Shortcut | Action
+
+Enter | Queue
+
+Cmd+Enter | Send now, or accept changes
+
+Cmd+Shift+Backspace | Cancel generation, or reject changes
+
+Cmd+Shift+L | Selection to the chat
+
+Shift+Tab | Rotate modes
+
+Cmd+N or Cmd+R | New chat
+
+Cmd+T | New tab
+
+Cmd+[ and Cmd+] | Previous chat and next chat
+
+Cmd+W | Close the chat
+
+Inline edit, Tab, terminal, and Design
+
+Shortcut | Action
+
+Cmd+K | Open inline edit, or the terminal bar
+
+Option+Enter | A quick question in inline edit. In chat, it also pins a skill as a mode.
+
+Tab and Cmd+Right | Accept the suggestion, or only the next word
+
+Cmd+Shift+D | Turn Design Mode on or off
+
+Shortcut source: cursor.com/docs/reference/keyboard-shortcuts. Source of the rest: the public documentation linked from each chapter.
