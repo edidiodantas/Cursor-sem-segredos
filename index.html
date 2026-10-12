@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cursor sem segredos</title>
+    <meta
+      name="description"
+      content="Guia em português para usar o Cursor: básico, intermediário e avançado."
+    />
+    <link rel="stylesheet" href="estilos.css" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="pular" href="#artigo">Ir para o capítulo</a>
+    <div class="app">
+      <aside class="barra" id="barra">
+        <div class="marca">
+          <img src="favicon.svg" alt="" width="36" height="36" />
+          <div>
+            <p class="marca-olho">Guia de estudo</p>
+            <p class="marca-nome">Cursor sem segredos</p>
+          </div>
+        </div>
+        <label class="busca">
+          <span class="sr">Buscar no livro</span>
+          <input id="busca" type="search" placeholder="Buscar no livro" autocomplete="off" />
+        </label>
+        <div class="filtros" id="filtros" role="tablist" aria-label="Níveis"></div>
+        <nav class="sumario" id="sumario" aria-label="Capítulos"></nav>
+        <div class="progresso">
+          <div class="progresso-topo">
+            <span>Lidos</span>
+            <span id="progresso-texto">0 de 0</span>
+          </div>
+          <div class="trilho" aria-hidden="true"><span id="progresso-barra"></span></div>
+        </div>
+      </aside>
+      <div class="cortina" id="cortina" hidden></div>
+      <main class="miolo">
+        <header class="topo">
+          <button type="button" class="menu" id="abrir-sumario" aria-expanded="false" aria-controls="barra">
+            Sumário
+          </button>
+          <p class="topo-titulo" id="topo-titulo">Cursor sem segredos</p>
+          <div class="topo-acoes">
+            <div class="so" role="group" aria-label="Atalhos de teclado">
+              <button type="button" id="so-mac" aria-pressed="true">Mac</button>
+              <button type="button" id="so-win" aria-pressed="false">Windows / Linux</button>
+            </div>
+            <button type="button" id="tema" aria-pressed="false">Noturno</button>
+          </div>
+        </header>
+        <article id="artigo" tabindex="-1"></article>
+      </main>
+    </div>
+    <script src="js/basico.js"></script>
+    <script src="js/intermediario.js"></script>
+    <script src="js/avancado.js"></script>
+    <script src="js/leitor.js"></script>
+  </body>
+</html>
